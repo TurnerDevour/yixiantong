@@ -1,9 +1,9 @@
 <template>
   <div class="scroll-wrapper" ref="wrapper">
-    <ul class="scroll-content">
+    <div class="scroll-content">
       <current-city></current-city>
       <city-list></city-list>
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -19,7 +19,11 @@
       CityList
     },
     mounted() {
-      this.scroll = new BetterScroll(this.$refs.wrapper);
+      this.scroll = new BetterScroll(this.$refs.wrapper, {
+        click: true,
+        scrollY: true,
+        eventPassthrough: 'vertical',
+      });
     }
   }
 </script>
