@@ -21,13 +21,8 @@
     mounted() {
       this.scroll = new BetterScroll(this.$refs.wrapper, {
         click: true,
-        scrollY: true,
         eventPassthrough: 'vertical',
       });
     }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

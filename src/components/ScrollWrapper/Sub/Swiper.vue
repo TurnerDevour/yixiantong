@@ -40,7 +40,7 @@
   @import '~styles/mixins.scss';
   @import '~styles/variables.scss';
 
-  .swiper-wrap >>> .swiper-pagination-bullet-active{
+  .swiper-wrap > > > .swiper-pagination-bullet-active {
     background-color: $defaultGreen;
   }
 

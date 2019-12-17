@@ -96,7 +96,6 @@
     mounted() {
       this.scroll = new BetterScroll(this.$refs.wrapper, {
         click: true,
-        scrollY: true,
         eventPassthrough: 'vertical',
       });
       this.currentId = this.cityId;
@@ -110,7 +109,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -2,6 +2,53 @@
   <div class="scroll-wrapper" ref="wrapper">
     <div class="scroll-content">
       <detail-swiper :pic-datas="detailDatas.pics"></detail-swiper>
+      <detail-view v-if="field==='view'"
+                   :name="detailDatas.name"
+                   :star-num="Number(detailDatas.star)"
+                   :score="detailDatas.score"
+                   :address="detailDatas.address"
+                   :price="Number(detailDatas.default_price)"
+                   :open-date-time="detailDatas.open_datetime"
+                   :tip="detailDatas.tip"
+                   :intro="detailDatas.intro"
+                   :ticket-info="detailDatas.ticket_info">
+      </detail-view>
+      <detail-food v-if="field==='food'"
+                   :name="detailDatas.name"
+                   :star-num="Number(detailDatas.star)"
+                   :score="detailDatas.score"
+                   :address="detailDatas.address"
+                   :price="Number(detailDatas.default_price)"
+                   :open-date-time="detailDatas.open_datetime"
+                   :recom="detailDatas.recom"
+                   :comment-keyword="detailDatas.comment_keyword">
+      </detail-food>
+      <detail-hotel v-if="field==='hotel'"
+                    :name="detailDatas.name"
+                    :star-num="Number(detailDatas.star)"
+                    :score="detailDatas.score"
+                    :address="detailDatas.address"
+                    :price="Number(detailDatas.default_price)"
+                    :service="detailDatas.service">
+      </detail-hotel>
+      <detail-massage v-if="field==='massage'"
+                      :name="detailDatas.name"
+                      :star-num="Number(detailDatas.star)"
+                      :score="detailDatas.score"
+                      :address="detailDatas.address"
+                      :price="Number(detailDatas.default_price)"
+                      :open-date-time="detailDatas.open_datetime"
+                      :comment-keyword="detailDatas.comment_keyword"
+                      :service="detailDatas.service">
+      </detail-massage>
+      <detail-ktv v-if="field==='ktv'"
+                  :name="detailDatas.name"
+                  :star-num="Number(detailDatas.star)"
+                  :score="detailDatas.score"
+                  :address="detailDatas.address"
+                  :price="Number(detailDatas.default_price)"
+                  :service="detailDatas.service">
+      </detail-ktv>
     </div>
   </div>
 </template>
@@ -11,6 +58,11 @@
   import {DetailModel} from "models/detail";
   import tools from "utils/tool.js";
   import DetailSwiper from './Sub/Swiper.vue';
+  import DetailFood from "./Detail/Food.vue";
+  import DetailHotel from "./Detail/Hotel.vue";
+  import DetailView from "./Detail/View.vue";
+  import DetailMassage from "./Detail/Massage.vue";
+  import DetailKtv from "./Detail/Ktv";
 
   export default {
     name: "DetailScrollWrapper",
@@ -21,8 +73,13 @@
         detailDatas: {},
       }
     },
-    components:{
+    components: {
       DetailSwiper,
+      DetailFood,
+      DetailHotel,
+      DetailView,
+      DetailMassage,
+      DetailKtv,
     },
     methods: {
       getDetail(field, id) {
@@ -44,8 +101,7 @@
     mounted() {
       this.scroll = new BetterScroll(this.$refs.wrapper, {
         click: true,
-        scrollY: true,
-        eventPassthrough: 'vertical'
+        eventPassthrough: 'vertical',
       });
       this.field = this.$route.query.field;
       this.id = this.$route.query.id;
@@ -53,7 +109,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

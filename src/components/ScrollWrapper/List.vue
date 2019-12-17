@@ -7,7 +7,3 @@
         name: "List"
     }
 </script>
-
-<style scoped>
-
-</style>
