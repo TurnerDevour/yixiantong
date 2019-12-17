@@ -83,13 +83,11 @@
       .item{
         font-size: .14rem;
 
-        &:nth-child(1){
-          color: $defaultGreen;
-
           .price{
+            color: $defaultGreen;
             font-size: .2rem;
           }
-        }
+
       }
     }
   }

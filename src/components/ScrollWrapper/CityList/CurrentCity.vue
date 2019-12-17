@@ -28,7 +28,7 @@
   @import '~styles/mixins.scss';
   @import '~styles/variables.scss';
 
-  .current-city{
+  .current-city {
     @include flex-row;
     align-items: center;
     height: .5rem;
@@ -37,12 +37,12 @@
     border-bottom: 1px solid #ddd;
     font-size: .16rem;
 
-    .iconfont{
+    .iconfont {
       vertical-align: .005rem;
       color: $defaultBgColor;
     }
 
-    .city{
+    .city {
       line-height: 1rem;
     }
   }

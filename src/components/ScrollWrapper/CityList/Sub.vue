@@ -8,7 +8,7 @@
   import {mapMutations} from 'vuex';
 
   export default {
-    name: "Sub",
+    name: "CityListSub",
     props: {
       cityInfo: Object
     },

@@ -7,4 +7,16 @@ export default {
       return item;
     });
   },
+
+  jsonToArr(str) {
+    return JSON.parse(str);
+  },
+
+  strToArr(str) {
+    return str.split(',');
+  },
+
+  replaceToSpace(str) {
+    return str.replace(/,/g, ' ');
+  }
 }

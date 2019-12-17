@@ -12,7 +12,7 @@
         </p>
         <p class="others">
              <span class="item">
-               <span class="price">￥{{data.default_price}}</span>起
+               ￥<span class="price">{{data.default_price}}</span>起
              </span>
           <span class="item">{{data.city_name}}</span>
         </p>
