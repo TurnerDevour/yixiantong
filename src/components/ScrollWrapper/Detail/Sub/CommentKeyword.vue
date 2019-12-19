@@ -1,6 +1,8 @@
 <template>
   <div class="comment-bd">
-    <detail-title icon="icon-haoping" title="评论关键词"></detail-title>
+    <detail-title icon="icon-haoping"
+                  title="评论关键词">
+    </detail-title>
     <div class="comment-keyword">
       <span class="keyword"
             v-for="(item, index) of commentKeyword"

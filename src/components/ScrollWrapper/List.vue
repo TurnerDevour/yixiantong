@@ -16,8 +16,10 @@
 
 <script>
   import BetterScroll from 'better-scroll';
+
   import {mapState} from 'vuex';
   import {ListModel} from 'models/list.js'
+
   import tools from "utils/tool";
 
   import ViewList from "./ViewLlist/Index.vue";
@@ -30,13 +32,6 @@
 
   export default {
     name: "ListScrollWrapper",
-    data() {
-      return {
-        loadingShow: true,
-        errorShow: false,
-        listDatas: {}
-      }
-    },
     components: {
       ViewList,
       FoodList,
@@ -46,8 +41,20 @@
       Loading,
       Error,
     },
+    data() {
+      return {
+        loadingShow: true,
+        errorShow: false,
+        listDatas: {}
+      }
+    },
     computed: {
       ...mapState(['cityId', 'field'])
+    },
+    mounted() {
+      this.scroll = new BetterScroll(this.$refs.wrapper);
+
+      this.getListDatas(this.cityId, this.field);
     },
     methods: {
       getListDatas(cityId, field) {
@@ -68,17 +75,14 @@
               }, 500);
             } else {
               this.errorShow = true;
+              console.log({
+                statusCode: res.status,
+                errorMsg: res.error
+              });
             }
           });
         }
       }
-    },
-    mounted() {
-      this.scroll = new BetterScroll(this.$refs.wrapper, {
-        click: true,
-        eventPassthrough: 'vertical',
-      });
-      this.getListDatas(this.cityId, this.field);
     },
     watch: {
       cityId() {

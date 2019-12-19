@@ -3,6 +3,7 @@
     <div class="scroll-content">
       <div v-if="!errorShow">
         <detail-swiper :pic-datas="detailDatas.pics"></detail-swiper>
+
         <detail-view v-if="field==='view'"
                      :name="detailDatas.name"
                      :star-num="Number(detailDatas.star)"
@@ -58,8 +59,11 @@
 
 <script>
   import BetterScroll from 'better-scroll';
+
   import {DetailModel} from "models/detail";
+
   import tools from "utils/tool.js";
+
   import DetailSwiper from './Sub/Swiper.vue';
   import DetailFood from "./Detail/Food.vue";
   import DetailHotel from "./Detail/Hotel.vue";
@@ -87,35 +91,11 @@
       DetailKtv,
       DetailError,
     },
-    methods: {
-      getDetail(field, id) {
-        const detailModel = new DetailModel();
-        detailModel.getDetail(field, id).then((res) => {
-          if (res && res.status === 0) {
-            this.errorShow = false;
-
-            const data = res.data;
-
-            data.pics && (data.pics = tools.jsonToArr(data.pics));
-            data.comment_keyword && (data.comment_keyword = tools.strToArr(data.comment_keyword));
-            data.recom && (data.recom = tools.replaceToSpace(data.recom));
-            data.service && (data.service = tools.jsonToArr(data.service));
-
-            this.detailDatas = data;
-          } else {
-            this.errorShow = true;
-          }
-        });
-      }
-    },
     mounted() {
-      this.scroll = new BetterScroll(this.$refs.wrapper, {
-        click: true,
-        eventPassthrough: 'vertical',
-      });
+      this.scroll = new BetterScroll(this.$refs.wrapper);
+
       this.field = this.$route.query.field;
       this.id = this.$route.query.id;
-
       this.getDetail(this.field, this.id);
     },
     activated() {
@@ -127,6 +107,31 @@
         this.id = this.currentId;
         this.getDetail(this.field, this.id);
       }
-    }
+    },
+    methods: {
+      getDetail(field, id) {
+        const detailModel = new DetailModel();
+        detailModel.getDetail(field, id).then((res) => {
+          if (res && res.status === 0) {
+            const data = res.data;
+
+            this.errorShow = false;
+
+            data.pics && (data.pics = tools.jsonToArr(data.pics));
+            data.comment_keyword && (data.comment_keyword = tools.strToArr(data.comment_keyword));
+            data.recom && (data.recom = tools.replaceToSpace(data.recom));
+            data.service && (data.service = tools.jsonToArr(data.service));
+
+            this.detailDatas = data;
+          } else {
+            this.errorShow = true;
+            console.log({
+              statusCode: res.status,
+              errorMsg: res.error
+            });
+          }
+        });
+      }
+    },
   }
 </script>

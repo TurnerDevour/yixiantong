@@ -11,8 +11,8 @@
   import {mapState} from 'vuex';
 
   import CommonHeader from "../components/header/Common.vue";
-  import ListScrollWrapper from "components/ScrollWrapper/List";
   import Tab from "components/Tab/Index.vue";
+  import ListScrollWrapper from "components/ScrollWrapper/List";
 
 
   export default {
@@ -32,8 +32,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import '~styles/mixins.scss';
-  @import '~styles/variables.scss';
-</style>

@@ -14,25 +14,21 @@
           <home-title title="景点："></home-title>
           <view-list :view-datas="data.viewDatas"></view-list>
         </div>
-
         <!--美食-->
         <div v-if="data.foodDatas && data.foodDatas.length>0">
           <home-title title="美食："/>
           <food-list :food-datas="data.foodDatas"></food-list>
         </div>
-
         <!--酒店-->
         <div v-if="data.hotelDatas && data.hotelDatas.length>0">
           <home-title title="酒店："></home-title>
           <hotel-list :hotel-datas="data.hotelDatas"></hotel-list>
         </div>
-
         <!--按摩-->
         <div v-if="data.massageDatas && data.massageDatas.length>0">
           <home-title title="按摩："></home-title>
           <massage-list :massage-datas="data.massageDatas"></massage-list>
         </div>
-
         <!--KTV-->
         <div v-if="data.ktvDatas && data.ktvDatas.length>0">
           <home-title title="KTV："></home-title>
@@ -69,7 +65,6 @@
       NoDataTip,
     },
     props: {
-      errorShow: false,
       data: Object,
     },
     mounted() {
@@ -77,9 +72,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import '~styles/mixins.scss';
-  @import '~styles/variables.scss';
-
-</style>

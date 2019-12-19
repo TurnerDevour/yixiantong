@@ -1,8 +1,9 @@
 <template>
   <div class="list-wrapper">
-    <city-list-sub v-for="(item,index) in CityList"
+    <city-list-sub v-for="(item,index) of CityList"
                    :cityInfo="item"
-                   :key="index"></city-list-sub>
+                   :key="index">
+    </city-list-sub>
   </div>
 </template>
 

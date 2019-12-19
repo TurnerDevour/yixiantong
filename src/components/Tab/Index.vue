@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import citieDatas from "data/cities";
   import TabSub from "./Sub.vue";
+  import citieDatas from "data/cities";
 
   export default {
     name: "ListTab",

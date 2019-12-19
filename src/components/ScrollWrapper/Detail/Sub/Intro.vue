@@ -1,6 +1,8 @@
 <template>
   <div class="intro-bd">
-    <detail-title icon="icon-intro" title="详细介绍"></detail-title>
+    <detail-title icon="icon-intro"
+                  title="详细介绍">
+    </detail-title>
     <div class="intro-content">{{intro}}</div>
   </div>
 </template>

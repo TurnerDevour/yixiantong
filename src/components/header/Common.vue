@@ -9,7 +9,7 @@
   import BackWard from "./Sub/BackWard.vue";
 
   export default {
-    name: "Common",
+    name: "CommonHeader",
     props: {
        title: {
          type: String,

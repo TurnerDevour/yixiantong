@@ -12,9 +12,10 @@
 </template>
 
 <script>
-  import tools from "utils/tool.js";
   import {mapState} from 'vuex';
   import {SearchModel} from 'models/search.js'
+
+  import tools from "utils/tool.js";
 
   export default {
     name: "SearchInput",
@@ -28,20 +29,20 @@
       ...mapState(['cityId'])
     },
     methods: {
-      onSearch: tools.throttle(function() {
+      onSearch: tools.throttle(function () {
         const keyword = tools.trimeSpace(this.keyword);
 
         if (keyword.length <= 0) {
-          this.$emit('onSearch',{});
+          this.$emit('onSearch', {});
           return;
         }
 
         const searchModel = new SearchModel();
 
         searchModel.searchAction(keyword, this.cityId).then((res) => {
-          this.$emit('onSearch',res);
+          this.$emit('onSearch', res);
         });
-      },1000)
+      }, 1000)
     }
   }
 </script>

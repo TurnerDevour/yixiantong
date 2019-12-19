@@ -1,6 +1,8 @@
 <template>
   <div class="recom-bd">
-    <detail-title icon="icon-recom" title="推荐菜品"></detail-title>
+    <detail-title icon="icon-recom"
+                  title="推荐菜品">
+    </detail-title>
     <div class="recom-content">{{recom}}</div>
   </div>
 </template>

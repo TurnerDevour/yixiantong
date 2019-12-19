@@ -12,7 +12,7 @@
       name: {
         type: String,
         default() {
-          return '名称加载中...'
+          return '加载中...'
         }
       }
     }

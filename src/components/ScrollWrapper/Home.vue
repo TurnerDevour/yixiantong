@@ -2,7 +2,6 @@
   <div class="scroll-wrapper" ref="wrapper">
     <div class="scroll-content">
       <category-icons></category-icons>
-
       <div v-if="!errorShow">
         <!--推荐景点-->
         <home-title :title="homeTitle.viewTitle"></home-title>
@@ -27,8 +26,10 @@
 
 <script>
   import BetterScroll from 'better-scroll';
+
   import {mapState} from 'vuex';
   import {IndexModel} from 'models/index.js';
+
   import CategoryIcons from './CategoryIcons/Index.vue';
   import HomeTitle from "./Sub/HomeTitle";
   import ViewList from './ViewLlist/Index.vue';
@@ -37,6 +38,7 @@
   import MassageList from './MassageList/Index.vue';
   import KtvList from './KtvList/Index.vue';
   import Error from "./Sub/Error";
+
   import tools from 'utils/tool.js';
 
   export default {
@@ -71,6 +73,22 @@
       KtvList,
       Error,
     },
+    computed: {
+      ...mapState(['cityId'])
+    },
+    mounted() {
+      this.scroll = new BetterScroll(this.$refs.wrapper);
+      this.currentId = this.cityId;
+      this.getHomeDatas(this.cityId);
+
+
+    },
+    activated() {
+      if (this.currentId !== this.cityId) {
+        this.currentId = this.cityId;
+        this.getHomeDatas(this.currentId);
+      }
+    },
     methods: {
       getHomeDatas(cityId) {
         const indexModel = new IndexModel();
@@ -86,26 +104,13 @@
             this.homeDatas.ktvDatas = data.ktvDatas;
           } else {
             this.errorShow = true;
+            console.log({
+              statusCode: res.status,
+              errorMsg: res.error
+            })
           }
         });
       }
     },
-    computed: {
-      ...mapState(['cityId'])
-    },
-    mounted() {
-      this.scroll = new BetterScroll(this.$refs.wrapper, {
-        click: true,
-        eventPassthrough: 'vertical',
-      });
-      this.currentId = this.cityId;
-      this.getHomeDatas(this.cityId);
-    },
-    activated() {
-      if (this.currentId !== this.cityId){
-        this.currentId = this.cityId;
-        this.getHomeDatas(this.currentId);
-      }
-    }
   }
 </script>

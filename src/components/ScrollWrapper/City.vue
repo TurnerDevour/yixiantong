@@ -19,10 +19,8 @@
       CityList
     },
     mounted() {
-      this.scroll = new BetterScroll(this.$refs.wrapper, {
-        click: true,
-        eventPassthrough: 'vertical',
-      });
+      this.scroll = new BetterScroll(this.$refs.wrapper);
+
     }
   }
 </script>

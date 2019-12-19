@@ -10,6 +10,7 @@
   import CommonHeader from "components/header/Common.vue";
   import SearchInput from "components/SearchInput/Index.vue"
   import SearchScrollWrapper from "components/ScrollWrapper/Search";
+
   import tool from "utils/tool";
 
   export default {
@@ -39,6 +40,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-</style>
