@@ -10,7 +10,7 @@
   import DetailScrollWrapper from "components/ScrollWrapper/Detail.vue";
 
   export default {
-    name: "Detaile",
+    name: "Detail",
     components: {
       CommonHeader,
       DetailScrollWrapper,
@@ -22,8 +22,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import '~styles/mixins.scss';
-  @import '~styles/variables.scss';
-</style>

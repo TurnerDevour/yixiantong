@@ -1,13 +1,34 @@
 <template>
-
+  <div class="loading" v-show="loadingShow">
+    <img class="loading-img" src="~@/assets/images/loading.gif"/>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Loading"
+  export default {
+    name: "Loading",
+    props: {
+      loadingShow: {
+        type: Boolean,
+        default() {
+          return true
+        }
+      }
     }
+  }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '~styles/mixins.scss';
+  @import '~styles/variables.scss';
 
+  .loading {
+    @include vh-center;
+    height: 3rem;
+
+    .loading-img {
+      width: .8rem;
+      height: .8rem;
+    }
+  }
 </style>
