@@ -14,10 +14,7 @@
 </script>
 
 <style scoped>
-  html,
-  body,
-  #app,
-  .container {
+  #app{
     height: 100%;
   }
 </style>
